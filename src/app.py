@@ -40,22 +40,8 @@ def sitemap():
 def list_users():
     # Get the list of users in your database (for example, User.query.all())
     users = User.query.all()
-
-    # Serialize each user and their favorites before converting them to JSON
-    serialized_users = []
-    for user in users:
-        serialized_user = user.serialize()
-        # If the user has favorites, serialize each favorite
-        if user.favorites:
-            serialized_favorites = [favorite.serialize() for favorite in user.favorites]
-            serialized_user['favorites'] = serialized_favorites
-        serialized_users.append(serialized_user)
-
-    # Convert the list of serialized users to JSON using jsonify
-    json_response = jsonify(serialized_users)
-
-    # Returns JSON response
-    return json_response, 200
+    all_users = list(map(lambda x: x.serialize(), users))
+    return jsonify(all_users), 200
 
 @app.route('/people', methods=['GET'])
 def list_people():

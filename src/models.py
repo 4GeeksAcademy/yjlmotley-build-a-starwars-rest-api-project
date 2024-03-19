@@ -41,7 +41,7 @@ class Favorite(db.Model):
 class Character(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250), nullable=False)
-    height = db.column(db.Integer)
+    height = db.Column(db.Integer)
     mass = db.Column(db.Integer)
     hair_color = db.Column(db.String(20))
     skin_color = db.Column(db.String(20))
@@ -59,11 +59,11 @@ class Character(db.Model):
             'mass': self.mass,
             'hair_color': self.hair_color,
             'skin_color': self.skin_color,
-            'eye_color': self.eyes_color,
+            'eye_color': self.eye_color,
             'birth_year': self.birth_year,
             'gender': self.gender,
             'homeworld': self.homeworld,
-            'character_pic': self.url
+            'character_pic': self.character_pic
         }
     
 class Planet(db.Model):
@@ -91,5 +91,5 @@ class Planet(db.Model):
             'climate': self.climate,
             'terrain': self.terrain,
             'surface_water': self.surface_water,
-            'planet_pic': self.url
+            'planet_pic': self.planet_pic
         }
